@@ -10,7 +10,7 @@ FROM tracks
 JOIN albums  ON tracks.AlbumId = albums.AlbumId
 JOIN artists ON albums.ArtistId = artists.ArtistId
 GROUP BY artists.ArtistId
-ORDER BY avg_minutes DESC;
+ORDER BY avg_minutes ASC;
 """
 
 cur.execute(query)
@@ -20,3 +20,5 @@ for artist, avg_len in rows:
     print(f"{artist} - {avg_len:.2f} minutes")
 
 conn.close()
+
+print("Database operations completed")
